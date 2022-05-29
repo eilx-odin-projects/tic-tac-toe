@@ -96,11 +96,15 @@ class Board {
         } else {
             background.flash('gray', 750)
         }
+        
+        await sleep(1000)
 
         view.buttons.forEach(button => {
             button.disabled = false
             button.innerText = ''
         })
+
+
         this.#turns = 0
         this.#state = Array.from(Array(3), () => Array(3).fill(''))
 
