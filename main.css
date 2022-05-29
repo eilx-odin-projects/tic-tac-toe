@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium&display=swap');
+
+:root {
+    color-scheme: light dark;
+    font-family: "Oxanium", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    --transition-length: 8s;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: lightgray;
+    transition: background-color var(--transition-length);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+h1 {
+    mix-blend-mode: overlay;
+}
+
+#Banner {
+    position: relative;
+    line-height: 2em;
+    padding: 1em;
+    overflow: hidden;
+    border-radius: 1em;
+}
+
+#Banner::before,
+#Banner::after {
+    position: absolute;
+    inset: 0;
+    transition: transform 300ms;
+    text-align: center;
+    color: white;
+}
+
+#Banner.computer ~ #Buttons {
+    pointer-events: none;
+}
+
+#Banner::before {
+    content: "Player";
+    background-color: green;
+    transform: translateY(-100%);
+}
+#Banner.player::before {
+    transform: translateY(0);
+}
+#Banner::after  {
+    content: "Computer";
+    background-color: red;
+    transform: translateY(100%);
+}
+#Banner.computer::after {
+    transform: translateY(0);
+}
+
+#Buttons {
+    --size: 3;
+    display: grid;
+    grid-template-rows: repeat(var(--size), 5em);
+    grid-template-columns: repeat(var(--size), 5em);
+}
+
+#Buttons button {
+    font-size: 1.3em;
+    font-family: inherit;
+}
+
+#Buttons button:not(:disabled) {
+    cursor: pointer;
+    user-select: none;
+}
+
+#Score {
+    display: block;
+    width: 100%;
+    text-align: right;
+    mix-blend-mode:  overlay;
+}
+
+#Restart {
+    margin-left: auto;
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
